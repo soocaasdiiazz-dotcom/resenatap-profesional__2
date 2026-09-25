@@ -1,0 +1,2096 @@
+```html
+{% extends "base.html" %}
+
+{% block title %}ReseñaTap | Convierte visitas en reseñas{% endblock %}
+
+{% block content %}
+
+<style>
+/* =========================================================
+   RESEÑATAP — PREMIUM LANDING
+   Rojo / Negro / Blanco
+   ========================================================= */
+
+.landing{
+  --red:#d71920;
+  --red-dark:#ad1016;
+  --black:#08090c;
+  --black-2:#111318;
+  --white:#fff;
+  --bg:#f6f6f4;
+  --line:#e5e5e5;
+  --muted:#70747c;
+  --soft-red:#fff0f1;
+
+  margin:-48px -22px -48px;
+  background:var(--bg);
+  color:#111;
+  overflow:hidden;
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+
+.landing *{
+  box-sizing:border-box;
+}
+
+.landing a{
+  text-decoration:none;
+}
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+.landing .wrap{
+  width:min(1180px,calc(100% - 48px));
+  margin:auto;
+}
+
+.landing .eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  color:var(--red);
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+
+.landing .eyebrow:before{
+  content:"";
+  width:18px;
+  height:2px;
+  background:var(--red);
+  border-radius:10px;
+}
+
+.landing h1,
+.landing h2,
+.landing h3{
+  font-family:Inter,system-ui,sans-serif;
+}
+
+.landing h2{
+  font-size:clamp(38px,5vw,62px);
+  line-height:.98;
+  letter-spacing:-.065em;
+  font-weight:900;
+  margin:12px 0 18px;
+}
+
+.landing .desc{
+  color:#73777e;
+  font-size:16px;
+  line-height:1.7;
+  max-width:620px;
+}
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+
+.landing .topnav{
+  position:sticky;
+  top:0;
+  z-index:100;
+  padding:14px 20px;
+  background:rgba(246,246,244,.82);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(0,0,0,.06);
+}
+
+.landing .topnav-inner{
+  width:min(1180px,100%);
+  height:64px;
+  margin:auto;
+  padding:0 18px 0 12px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  background:rgba(255,255,255,.94);
+  border:1px solid #dedede;
+  border-radius:18px;
+
+  box-shadow:
+    0 15px 45px rgba(0,0,0,.07),
+    0 2px 5px rgba(0,0,0,.03);
+}
+
+.landing .brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  color:#111;
+  font-size:20px;
+  font-weight:900;
+  letter-spacing:-.045em;
+}
+
+.landing .brand-mark{
+  width:36px;
+  height:36px;
+
+  display:grid;
+  place-items:center;
+
+  background:var(--red);
+  color:white;
+  border-radius:11px;
+
+  font-weight:900;
+
+  box-shadow:
+    0 8px 22px rgba(215,25,32,.25);
+}
+
+.landing .navlinks{
+  display:flex;
+  align-items:center;
+  gap:25px;
+
+  font-size:13px;
+  font-weight:700;
+  color:#65676c;
+}
+
+.landing .navlinks a{
+  transition:.2s ease;
+}
+
+.landing .navlinks a:hover{
+  color:var(--red);
+}
+
+.landing .navbtn{
+  padding:11px 17px;
+  border-radius:11px;
+
+  background:#111;
+  color:#fff!important;
+
+  box-shadow:0 8px 20px rgba(0,0,0,.12);
+}
+
+.landing .navbtn:hover{
+  background:var(--red);
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.landing .hero-section{
+  position:relative;
+  padding:105px 0 90px;
+}
+
+.landing .hero-section:before{
+  content:"";
+  position:absolute;
+  width:520px;
+  height:520px;
+  right:-180px;
+  top:40px;
+
+  background:rgba(215,25,32,.09);
+  filter:blur(90px);
+  border-radius:50%;
+}
+
+.landing .hero-grid{
+  position:relative;
+  z-index:1;
+
+  display:grid;
+  grid-template-columns:1.03fr .97fr;
+  gap:70px;
+  align-items:center;
+}
+
+.landing .pill{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+
+  padding:8px 12px;
+
+  background:#fff;
+  border:1px solid #dedede;
+  border-radius:999px;
+
+  font-size:11px;
+  font-weight:800;
+
+  box-shadow:0 8px 25px rgba(0,0,0,.04);
+}
+
+.landing .pill-dot{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:var(--red);
+  box-shadow:0 0 0 5px rgba(215,25,32,.10);
+}
+
+.landing .hero-title{
+  margin:24px 0 25px;
+
+  font-size:clamp(52px,6.5vw,82px);
+  line-height:.91;
+  letter-spacing:-.075em;
+  font-weight:950;
+
+  max-width:720px;
+}
+
+.landing .hero-title .red{
+  color:var(--red);
+}
+
+.landing .hero-copy{
+  max-width:620px;
+  margin:0 0 30px;
+
+  color:#676b72;
+  font-size:18px;
+  line-height:1.65;
+}
+
+.landing .actions{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.landing .btnx{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+
+  padding:14px 20px;
+  border-radius:12px;
+
+  font-size:13px;
+  font-weight:850;
+
+  transition:.22s ease;
+}
+
+.landing .btnx.primary{
+  color:#fff;
+  background:var(--red);
+
+  box-shadow:
+    0 14px 30px rgba(215,25,32,.22);
+}
+
+.landing .btnx.primary:hover{
+  background:var(--red-dark);
+  transform:translateY(-2px);
+}
+
+.landing .btnx.secondary{
+  color:#111;
+  background:#fff;
+  border:1px solid #ddd;
+}
+
+.landing .btnx.secondary:hover{
+  border-color:#aaa;
+  transform:translateY(-2px);
+}
+
+.landing .micro{
+  margin-top:15px;
+  color:#999;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.02em;
+}
+
+/* =========================================================
+   HERO VISUAL
+   ========================================================= */
+
+.landing .hero-visual{
+  position:relative;
+  min-height:560px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.landing .hero-visual:before{
+  content:"";
+
+  position:absolute;
+  width:390px;
+  height:390px;
+
+  background:#f1c4c6;
+  filter:blur(75px);
+  opacity:.7;
+
+  border-radius:50%;
+}
+
+.landing .phone{
+  position:relative;
+  z-index:2;
+
+  width:290px;
+  padding:9px;
+
+  background:#080808;
+  border-radius:40px;
+
+  transform:rotate(3deg);
+
+  box-shadow:
+    0 50px 100px rgba(0,0,0,.28),
+    0 10px 20px rgba(0,0,0,.12);
+}
+
+.landing .phone-screen{
+  min-height:560px;
+
+  padding:22px;
+
+  background:#f5f5f5;
+  border-radius:33px;
+
+  overflow:hidden;
+}
+
+.landing .phone-notch{
+  width:92px;
+  height:24px;
+
+  margin:-22px auto 30px;
+
+  background:#080808;
+  border-radius:0 0 15px 15px;
+}
+
+.landing .google{
+  font-size:14px;
+  font-weight:950;
+  margin-bottom:18px;
+}
+
+.landing .review-card{
+  background:#fff;
+  border:1px solid #e2e2e2;
+  border-radius:20px;
+
+  padding:21px;
+
+  text-align:center;
+
+  box-shadow:0 18px 35px rgba(0,0,0,.07);
+}
+
+.landing .avatar{
+  width:57px;
+  height:57px;
+
+  display:grid;
+  place-items:center;
+
+  margin:auto auto 12px;
+
+  background:var(--red);
+  color:#fff;
+
+  border-radius:16px;
+
+  font-size:22px;
+  font-weight:900;
+}
+
+.landing .stars{
+  margin:17px 0;
+
+  color:var(--red);
+
+  font-size:23px;
+  letter-spacing:3px;
+}
+
+.landing .fakeinput{
+  height:82px;
+
+  padding:12px;
+
+  text-align:left;
+
+  background:#f2f2f2;
+  border-radius:12px;
+
+  color:#aaa;
+  font-size:11px;
+}
+
+.landing .fakebutton{
+  margin-top:11px;
+  padding:12px;
+
+  background:#111;
+  color:#fff;
+
+  border-radius:10px;
+
+  font-size:11px;
+  font-weight:850;
+}
+
+/* FLOATING CARDS */
+
+.landing .float-card{
+  position:absolute;
+  z-index:4;
+
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  padding:13px 15px;
+
+  background:rgba(255,255,255,.95);
+  border:1px solid #ddd;
+  border-radius:15px;
+
+  box-shadow:0 18px 40px rgba(0,0,0,.12);
+
+  font-size:11px;
+  font-weight:800;
+}
+
+.landing .float-card strong{
+  display:block;
+  font-size:13px;
+}
+
+.landing .float-card small{
+  color:#888;
+  font-size:9px;
+}
+
+.landing .float-icon{
+  width:34px;
+  height:34px;
+
+  display:grid;
+  place-items:center;
+
+  background:var(--soft-red);
+  color:var(--red);
+
+  border-radius:10px;
+}
+
+.landing .float-one{
+  left:0;
+  top:125px;
+}
+
+.landing .float-two{
+  right:-5px;
+  bottom:115px;
+}
+
+/* =========================================================
+   TRUST STRIP
+   ========================================================= */
+
+.landing .trust{
+  padding:25px 0 80px;
+}
+
+.landing .trust-label{
+  margin-bottom:20px;
+
+  text-align:center;
+
+  color:#999;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.17em;
+  text-transform:uppercase;
+}
+
+.landing .chips{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:9px;
+}
+
+.landing .chip{
+  padding:10px 14px;
+
+  background:#fff;
+  border:1px solid #ddd;
+  border-radius:999px;
+
+  color:#555;
+  font-size:11px;
+  font-weight:750;
+}
+
+/* =========================================================
+   SECTION
+   ========================================================= */
+
+.landing .block{
+  padding:105px 0;
+}
+
+.landing .section-head{
+  margin-bottom:50px;
+}
+
+.landing .section-head.center{
+  text-align:center;
+}
+
+.landing .section-head.center .desc{
+  margin-left:auto;
+  margin-right:auto;
+}
+
+/* =========================================================
+   STEPS
+   ========================================================= */
+
+.landing .steps{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+
+.landing .step{
+  position:relative;
+
+  min-height:275px;
+
+  padding:28px;
+
+  background:#fff;
+  border:1px solid #dedede;
+  border-radius:23px;
+
+  transition:.25s ease;
+}
+
+.landing .step:hover{
+  transform:translateY(-6px);
+
+  box-shadow:
+    0 25px 60px rgba(0,0,0,.08);
+}
+
+.landing .step-number{
+  width:42px;
+  height:42px;
+
+  display:grid;
+  place-items:center;
+
+  margin-bottom:65px;
+
+  background:#111;
+  color:#fff;
+
+  border-radius:12px;
+
+  font-size:11px;
+  font-weight:900;
+}
+
+.landing .step h3{
+  margin:0 0 9px;
+
+  font-size:19px;
+  letter-spacing:-.025em;
+}
+
+.landing .step p{
+  margin:0;
+
+  color:#73777d;
+  font-size:12px;
+  line-height:1.65;
+}
+
+/* =========================================================
+   DARK PRODUCT SECTION
+   ========================================================= */
+
+.landing .dark{
+  position:relative;
+
+  background:#0b0c0f;
+  color:#fff;
+}
+
+.landing .dark:before{
+  content:"";
+
+  position:absolute;
+  width:500px;
+  height:500px;
+  left:-220px;
+  top:-150px;
+
+  background:rgba(215,25,32,.10);
+  filter:blur(90px);
+  border-radius:50%;
+}
+
+.landing .product{
+  position:relative;
+  z-index:1;
+
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:90px;
+
+  align-items:center;
+}
+
+.landing .dark .desc{
+  color:#a5a7ad;
+}
+
+.landing .plate-area{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:390px;
+}
+
+.landing .plate{
+  position:relative;
+
+  width:360px;
+  height:245px;
+
+  padding:27px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #fff 0%,
+      #ececec 45%,
+      #cfcfcf 100%
+    );
+
+  color:#111;
+
+  border-radius:25px;
+
+  transform:rotate(-5deg);
+
+  box-shadow:
+    25px 35px 70px rgba(0,0,0,.55);
+}
+
+.landing .plate:before{
+  content:"";
+
+  position:absolute;
+  inset:8px;
+
+  border:1px solid rgba(0,0,0,.08);
+  border-radius:19px;
+}
+
+.landing .plate-brand{
+  position:relative;
+
+  font-size:10px;
+  font-weight:950;
+  letter-spacing:.14em;
+}
+
+.landing .plate-copy{
+  position:absolute;
+  left:27px;
+  bottom:29px;
+}
+
+.landing .plate-copy strong{
+  display:block;
+
+  font-size:24px;
+  line-height:1;
+
+  letter-spacing:-.05em;
+}
+
+.landing .plate-copy span{
+  display:block;
+
+  margin-top:7px;
+
+  color:#666;
+  font-size:10px;
+}
+
+.landing .nfc{
+  position:absolute;
+
+  right:25px;
+  bottom:25px;
+
+  width:72px;
+  height:72px;
+
+  display:grid;
+  place-items:center;
+
+  border:2px solid #888;
+  border-radius:50%;
+
+  font-size:23px;
+}
+
+.landing .features{
+  display:grid;
+  gap:20px;
+  margin-top:30px;
+}
+
+.landing .feature{
+  display:flex;
+  gap:13px;
+}
+
+.landing .fi{
+  width:40px;
+  height:40px;
+
+  display:grid;
+  place-items:center;
+
+  flex:0 0 auto;
+
+  background:#1c1e23;
+  border:1px solid #2b2d33;
+
+  border-radius:11px;
+}
+
+.landing .feature h4{
+  margin:0 0 3px;
+  font-size:14px;
+}
+
+.landing .feature p{
+  margin:0;
+  color:#8f9299;
+  font-size:11px;
+}
+
+/* =========================================================
+   STATS / RESULTS
+   ========================================================= */
+
+.landing .results{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+
+.landing .result-card{
+  padding:30px;
+
+  background:#fff;
+  border:1px solid #dedede;
+  border-radius:22px;
+}
+
+.landing .result-number{
+  color:var(--red);
+
+  font-size:45px;
+  line-height:1;
+
+  font-weight:950;
+  letter-spacing:-.06em;
+}
+
+.landing .result-card h3{
+  margin:15px 0 7px;
+  font-size:16px;
+}
+
+.landing .result-card p{
+  margin:0;
+  color:#777;
+  font-size:12px;
+}
+
+/* =========================================================
+   BUSINESS TYPES
+   ========================================================= */
+
+.landing .business-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+}
+
+.landing .business-card{
+  padding:22px;
+
+  background:#fff;
+  border:1px solid #ddd;
+  border-radius:18px;
+
+  transition:.22s;
+}
+
+.landing .business-card:hover{
+  transform:translateY(-4px);
+  border-color:#bbb;
+}
+
+.landing .business-icon{
+  width:42px;
+  height:42px;
+
+  display:grid;
+  place-items:center;
+
+  margin-bottom:30px;
+
+  background:var(--soft-red);
+  color:var(--red);
+
+  border-radius:12px;
+}
+
+.landing .business-card h3{
+  margin:0 0 6px;
+  font-size:15px;
+}
+
+.landing .business-card p{
+  margin:0;
+  color:#777;
+  font-size:11px;
+}
+
+/* =========================================================
+   PRICING
+   ========================================================= */
+
+.landing .pricing{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+
+.landing .price{
+  padding:29px;
+
+  background:#fff;
+  border:1px solid #ddd;
+  border-radius:23px;
+}
+
+.landing .price.featured{
+  position:relative;
+
+  background:#111;
+  color:#fff;
+
+  border-color:#111;
+
+  transform:translateY(-8px);
+
+  box-shadow:
+    0 30px 70px rgba(0,0,0,.18);
+}
+
+.landing .popular{
+  position:absolute;
+  right:18px;
+  top:18px;
+
+  padding:6px 9px;
+
+  background:var(--red);
+  color:#fff;
+
+  border-radius:999px;
+
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:.08em;
+}
+
+.landing .price h3{
+  margin:0 0 9px;
+  font-size:17px;
+}
+
+.landing .amount{
+  margin:13px 0 4px;
+
+  font-size:42px;
+  line-height:1;
+
+  font-weight:950;
+  letter-spacing:-.07em;
+}
+
+.landing .price-desc{
+  min-height:38px;
+
+  color:#888;
+  font-size:11px;
+}
+
+.landing .price.featured .price-desc{
+  color:#aaa;
+}
+
+.landing .price ul{
+  list-style:none;
+
+  padding:0;
+  margin:23px 0;
+
+  display:grid;
+  gap:11px;
+}
+
+.landing .price li{
+  color:#555;
+  font-size:11px;
+}
+
+.landing .price.featured li{
+  color:#ccc;
+}
+
+.landing .price li:before{
+  content:"✓";
+
+  margin-right:8px;
+
+  color:var(--red);
+  font-weight:950;
+}
+
+/* =========================================================
+   FAQ
+   ========================================================= */
+
+.landing .faq{
+  max-width:800px;
+  margin:auto;
+}
+
+.landing details{
+  background:#fff;
+  border:1px solid #ddd;
+  border-radius:15px;
+
+  padding:19px 21px;
+  margin-bottom:9px;
+}
+
+.landing summary{
+  cursor:pointer;
+
+  list-style:none;
+
+  font-size:13px;
+  font-weight:850;
+}
+
+.landing summary::-webkit-details-marker{
+  display:none;
+}
+
+.landing details p{
+  padding-top:12px;
+
+  margin:0;
+
+  color:#696d73;
+  font-size:12px;
+  line-height:1.65;
+}
+
+/* =========================================================
+   CTA
+   ========================================================= */
+
+.landing .cta{
+  padding:30px 0 105px;
+}
+
+.landing .cta-box{
+  position:relative;
+  overflow:hidden;
+
+  padding:70px;
+
+  background:var(--red);
+  color:#fff;
+
+  border-radius:30px;
+
+  box-shadow:
+    0 25px 70px rgba(215,25,32,.18);
+}
+
+.landing .cta-box:before,
+.landing .cta-box:after{
+  content:"";
+
+  position:absolute;
+
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:50%;
+}
+
+.landing .cta-box:before{
+  width:430px;
+  height:430px;
+
+  right:-170px;
+  top:-220px;
+}
+
+.landing .cta-box:after{
+  width:260px;
+  height:260px;
+
+  right:-80px;
+  bottom:-170px;
+}
+
+.landing .cta-box h2{
+  position:relative;
+  z-index:1;
+
+  max-width:720px;
+
+  color:#fff;
+}
+
+.landing .cta-box p{
+  position:relative;
+  z-index:1;
+
+  max-width:610px;
+
+  margin:0 0 27px;
+
+  color:#ffdfe0;
+  font-size:15px;
+}
+
+.landing .cta-box .btnx{
+  position:relative;
+  z-index:2;
+
+  background:#fff;
+  color:#111;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.landing .foot{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  padding:30px 0 40px;
+
+  border-top:1px solid #ddd;
+
+  color:#8b8e94;
+  font-size:10px;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media(max-width:950px){
+
+  .landing .hero-grid{
+    grid-template-columns:1fr;
+    gap:50px;
+  }
+
+  .landing .hero-copy{
+    max-width:700px;
+  }
+
+  .landing .hero-visual{
+    min-height:530px;
+  }
+
+  .landing .product{
+    grid-template-columns:1fr;
+    gap:60px;
+  }
+
+  .landing .business-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:800px){
+
+  .landing .navlinks a:not(.navbtn){
+    display:none;
+  }
+
+  .landing .steps,
+  .landing .pricing,
+  .landing .results{
+    grid-template-columns:1fr;
+  }
+
+  .landing .price.featured{
+    transform:none;
+  }
+
+  .landing .hero-section{
+    padding-top:75px;
+  }
+
+  .landing .float-one{
+    left:0;
+  }
+
+  .landing .float-two{
+    right:0;
+  }
+
+  .landing .cta-box{
+    padding:48px 30px;
+  }
+}
+
+@media(max-width:520px){
+
+  .landing{
+    margin:-28px -18px -28px;
+  }
+
+  .landing .wrap{
+    width:min(100% - 34px,1180px);
+  }
+
+  .landing .topnav{
+    padding:10px;
+  }
+
+  .landing .topnav-inner{
+    height:58px;
+  }
+
+  .landing .hero-section{
+    padding:65px 0 60px;
+  }
+
+  .landing .hero-title{
+    font-size:49px;
+  }
+
+  .landing .hero-copy{
+    font-size:16px;
+  }
+
+  .landing .hero-visual{
+    min-height:490px;
+  }
+
+  .landing .phone{
+    width:260px;
+  }
+
+  .landing .phone-screen{
+    min-height:510px;
+  }
+
+  .landing .float-card{
+    transform:scale(.85);
+  }
+
+  .landing .float-one{
+    left:-12px;
+    top:95px;
+  }
+
+  .landing .float-two{
+    right:-12px;
+    bottom:80px;
+  }
+
+  .landing .block{
+    padding:78px 0;
+  }
+
+  .landing .business-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .landing .plate{
+    width:310px;
+    height:220px;
+  }
+
+  .landing .cta-box{
+    padding:42px 24px;
+  }
+
+  .landing .foot{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:8px;
+  }
+}
+</style>
+
+<div class="landing">
+
+  <!-- NAV -->
+  <header class="topnav">
+    <div class="topnav-inner">
+
+      <a class="brand" href="{{ url_for('index') }}">
+        <span class="brand-mark">R</span>
+        ReseñaTap
+      </a>
+
+      <nav class="navlinks">
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="#producto">Producto</a>
+        <a href="#resultados">Resultados</a>
+        <a href="#precios">Precios</a>
+        <a href="#faq">FAQ</a>
+
+        <a class="navbtn" href="{{ url_for('register') }}">
+          Quiero mi placa →
+        </a>
+      </nav>
+
+    </div>
+  </header>
+
+
+  <!-- HERO -->
+  <section class="hero-section">
+
+    <div class="wrap hero-grid">
+
+      <div>
+
+        <div class="pill">
+          <span class="pill-dot"></span>
+          Hecho para negocios locales
+        </div>
+
+        <h1 class="hero-title">
+          Convierte visitas en
+          <span class="red">reseñas.</span>
+        </h1>
+
+        <p class="hero-copy">
+          Una placa inteligente para que tus clientes puedan
+          descubrir dónde dejar su opinión con un simple toque
+          o escaneo.
+        </p>
+
+        <div class="actions">
+
+          <a class="btnx primary" href="{{ url_for('register') }}">
+            Quiero mi placa →
+          </a>
+
+          <a class="btnx secondary" href="#como-funciona">
+            Ver cómo funciona
+          </a>
+
+        </div>
+
+        <div class="micro">
+          NFC + QR · Sin aplicaciones · Personalizable · Panel de métricas
+        </div>
+
+      </div>
+
+
+      <div class="hero-visual">
+
+        <div class="float-card float-one">
+          <div class="float-icon">★</div>
+          <div>
+            <strong>Más fácil</strong>
+            <small>para tus clientes</small>
+          </div>
+        </div>
+
+        <div class="float-card float-two">
+          <div class="float-icon">↗</div>
+          <div>
+            <strong>Interacción</strong>
+            <small>NFC + QR</small>
+          </div>
+        </div>
+
+
+        <div class="phone">
+
+          <div class="phone-screen">
+
+            <div class="phone-notch"></div>
+
+            <div class="google">
+              Google
+            </div>
+
+            <div class="review-card">
+
+              <div class="avatar">
+                ★
+              </div>
+
+              <strong>Tu negocio</strong>
+
+              <div style="font-size:12px;color:#888;margin-top:4px">
+                ¿Cómo fue tu experiencia?
+              </div>
+
+              <div class="stars">
+                ☆ ☆ ☆ ☆ ☆
+              </div>
+
+              <div class="fakeinput">
+                Escribe una reseña...
+              </div>
+
+              <div class="fakebutton">
+                Publicar reseña
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- NEGOCIOS -->
+  <section class="trust">
+
+    <div class="wrap">
+
+      <div class="trust-label">
+        Una solución para negocios que viven de su reputación
+      </div>
+
+      <div class="chips">
+
+        <span class="chip">☕ Cafeterías</span>
+        <span class="chip">🍽 Restaurantes</span>
+        <span class="chip">✂ Peluquerías</span>
+        <span class="chip">🏋 Gimnasios</span>
+        <span class="chip">⚕ Clínicas</span>
+        <span class="chip">🛍 Tiendas</span>
+        <span class="chip">🏨 Hoteles</span>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- COMO FUNCIONA -->
+  <section id="como-funciona" class="block">
+
+    <div class="wrap">
+
+      <div class="section-head">
+
+        <div class="eyebrow">
+          Cómo funciona
+        </div>
+
+        <h2>
+          Tan sencillo como tocar.
+        </h2>
+
+        <p class="desc">
+          Reducimos los pasos entre una buena experiencia
+          y una reseña. Porque aparentemente hasta tres clics
+          pueden ser demasiado para la humanidad.
+        </p>
+
+      </div>
+
+
+      <div class="steps">
+
+        <article class="step">
+
+          <div class="step-number">
+            01
+          </div>
+
+          <h3>
+            Acerca el móvil
+          </h3>
+
+          <p>
+            El cliente acerca su teléfono a la placa NFC.
+            No necesita instalar ninguna aplicación.
+          </p>
+
+        </article>
+
+
+        <article class="step">
+
+          <div class="step-number">
+            02
+          </div>
+
+          <h3>
+            Se abre el enlace
+          </h3>
+
+          <p>
+            El teléfono detecta la placa y abre automáticamente
+            la experiencia configurada para tu negocio.
+          </p>
+
+        </article>
+
+
+        <article class="step">
+
+          <div class="step-number">
+            03
+          </div>
+
+          <h3>
+            Comparte su opinión
+          </h3>
+
+          <p>
+            El cliente llega a tu destino de reseñas y puede
+            compartir su experiencia.
+          </p>
+
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PRODUCTO -->
+  <section id="producto" class="block dark">
+
+    <div class="wrap product">
+
+      <div class="plate-area">
+
+        <div class="plate">
+
+          <div class="plate-brand">
+            RESEÑATAP
+          </div>
+
+          <div class="plate-copy">
+
+            <strong>
+              Déjanos tu opinión
+            </strong>
+
+            <span>
+              Acerca tu móvil para valorar tu experiencia
+            </span>
+
+          </div>
+
+          <div class="nfc">
+            ◉
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div>
+
+        <div class="eyebrow">
+          El producto
+        </div>
+
+        <h2>
+          Pequeña por fuera.
+          Potente por dentro.
+        </h2>
+
+        <p class="desc">
+          Una placa diseñada para integrarse en tu negocio,
+          combinando NFC y QR para facilitar el acceso
+          a tu experiencia de reseñas.
+        </p>
+
+
+        <div class="features">
+
+          <div class="feature">
+
+            <div class="fi">
+              📱
+            </div>
+
+            <div>
+
+              <h4>
+                NFC integrado
+              </h4>
+
+              <p>
+                Un toque para acceder al enlace.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="feature">
+
+            <div class="fi">
+              ▦
+            </div>
+
+            <div>
+
+              <h4>
+                Código QR
+              </h4>
+
+              <p>
+                Una alternativa sencilla para cualquier móvil.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="feature">
+
+            <div class="fi">
+              ✦
+            </div>
+
+            <div>
+
+              <h4>
+                Personalizada
+              </h4>
+
+              <p>
+                Tu logo, tus colores y tu identidad.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- RESULTADOS -->
+  <section id="resultados" class="block">
+
+    <div class="wrap">
+
+      <div class="section-head center">
+
+        <div class="eyebrow">
+          La experiencia
+        </div>
+
+        <h2>
+          Todo más simple.
+        </h2>
+
+        <p class="desc">
+          ReseñaTap conecta el punto físico con tu presencia
+          digital y te permite entender cómo interactúan
+          tus clientes con cada placa.
+        </p>
+
+      </div>
+
+
+      <div class="results">
+
+        <article class="result-card">
+
+          <div class="result-number">
+            01
+          </div>
+
+          <h3>
+            Un punto de contacto
+          </h3>
+
+          <p>
+            Coloca tu placa en caja, mesa, recepción,
+            mostrador o cualquier lugar visible.
+          </p>
+
+        </article>
+
+
+        <article class="result-card">
+
+          <div class="result-number">
+            02
+          </div>
+
+          <h3>
+            NFC + QR
+          </h3>
+
+          <p>
+            Dos formas de acceder a la misma experiencia,
+            sin obligar al cliente a utilizar una aplicación.
+          </p>
+
+        </article>
+
+
+        <article class="result-card">
+
+          <div class="result-number">
+            03
+          </div>
+
+          <h3>
+            Métricas
+          </h3>
+
+          <p>
+            Consulta las interacciones y descubre cómo
+            se utilizan tus placas.
+          </p>
+
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- TIPOS DE NEGOCIO -->
+  <section class="block" style="background:#fff">
+
+    <div class="wrap">
+
+      <div class="section-head">
+
+        <div class="eyebrow">
+          Para cualquier negocio
+        </div>
+
+        <h2>
+          Tu negocio.
+          Tu identidad.
+        </h2>
+
+        <p class="desc">
+          ReseñaTap se adapta al lugar donde trabajan
+          tus clientes y a la forma en que quieres presentar
+          tu marca.
+        </p>
+
+      </div>
+
+
+      <div class="business-grid">
+
+        <article class="business-card">
+
+          <div class="business-icon">
+            ☕
+          </div>
+
+          <h3>
+            Restaurantes
+          </h3>
+
+          <p>
+            Mesa, barra, caja o salida.
+          </p>
+
+        </article>
+
+
+        <article class="business-card">
+
+          <div class="business-icon">
+            🏨
+          </div>
+
+          <h3>
+            Hoteles
+          </h3>
+
+          <p>
+            Recepción y puntos de atención.
+          </p>
+
+        </article>
+
+
+        <article class="business-card">
+
+          <div class="business-icon">
+            ✂
+          </div>
+
+          <h3>
+            Servicios
+          </h3>
+
+          <p>
+            Peluquerías, clínicas y profesionales.
+          </p>
+
+        </article>
+
+
+        <article class="business-card">
+
+          <div class="business-icon">
+            🛍
+          </div>
+
+          <h3>
+            Comercios
+          </h3>
+
+          <p>
+            Tiendas y negocios locales.
+          </p>
+
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PRECIOS -->
+  <section id="precios" class="block">
+
+    <div class="wrap">
+
+      <div class="section-head center">
+
+        <div class="eyebrow">
+          Precios
+        </div>
+
+        <h2>
+          Empieza sin complicarte.
+        </h2>
+
+        <p class="desc">
+          Diferentes opciones para distintos niveles
+          de personalización y seguimiento.
+        </p>
+
+      </div>
+
+
+      <div class="pricing">
+
+
+        <article class="price">
+
+          <h3>
+            Esencial
+          </h3>
+
+          <div class="amount">
+            19,90€
+          </div>
+
+          <div class="price-desc">
+            Para empezar de forma sencilla.
+          </div>
+
+          <ul>
+            <li>Placa NFC</li>
+            <li>Código QR</li>
+            <li>Configuración inicial</li>
+            <li>Diseño estándar</li>
+          </ul>
+
+          <a class="btnx secondary"
+             href="{{ url_for('register') }}">
+            Elegir
+          </a>
+
+        </article>
+
+
+        <article class="price featured">
+
+          <span class="popular">
+            MÁS COMPLETO
+          </span>
+
+          <h3>
+            Personalizada
+          </h3>
+
+          <div class="amount">
+            29,90€
+          </div>
+
+          <div class="price-desc">
+            Tu placa adaptada a tu negocio.
+          </div>
+
+          <ul>
+            <li>Placa NFC premium</li>
+            <li>QR personalizado</li>
+            <li>Logo del negocio</li>
+            <li>Diseño personalizado</li>
+            <li>Configuración completa</li>
+          </ul>
+
+          <a class="btnx primary"
+             href="{{ url_for('register') }}">
+            Quiero esta →
+          </a>
+
+        </article>
+
+
+        <article class="price">
+
+          <h3>
+            Profesional
+          </h3>
+
+          <div class="amount">
+            49,90€
+          </div>
+
+          <div class="price-desc">
+            Para negocios que quieren seguimiento.
+          </div>
+
+          <ul>
+            <li>Placa premium</li>
+            <li>NFC + QR</li>
+            <li>Diseño personalizado</li>
+            <li>Enlace gestionable</li>
+            <li>Estadísticas básicas</li>
+          </ul>
+
+          <a class="btnx secondary"
+             href="{{ url_for('register') }}">
+            Elegir
+          </a>
+
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FAQ -->
+  <section id="faq" class="block" style="background:#fff">
+
+    <div class="wrap">
+
+      <div class="section-head center">
+
+        <div class="eyebrow">
+          Preguntas frecuentes
+        </div>
+
+        <h2>
+          Lo que probablemente
+          te estás preguntando.
+        </h2>
+
+      </div>
+
+
+      <div class="faq">
+
+        <details>
+
+          <summary>
+            ¿Necesita el cliente instalar una aplicación?
+          </summary>
+
+          <p>
+            No. En los dispositivos compatibles basta con
+            acercar el móvil a la placa NFC. También puede
+            utilizar el código QR.
+          </p>
+
+        </details>
+
+
+        <details>
+
+          <summary>
+            ¿Funciona con iPhone y Android?
+          </summary>
+
+          <p>
+            Los teléfonos modernos compatibles con NFC pueden
+            utilizar la placa. El QR funciona como alternativa
+            mediante la cámara.
+          </p>
+
+        </details>
+
+
+        <details>
+
+          <summary>
+            ¿Puedo cambiar el enlace después?
+          </summary>
+
+          <p>
+            Sí, si utilizas el sistema de enlaces gestionables
+            de ReseñaTap.
+          </p>
+
+        </details>
+
+
+        <details>
+
+          <summary>
+            ¿Puedo poner el logo de mi empresa?
+          </summary>
+
+          <p>
+            Sí. Las placas personalizadas pueden adaptarse
+            a la identidad visual de cada negocio.
+          </p>
+
+        </details>
+
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CTA -->
+  <section class="cta">
+
+    <div class="wrap">
+
+      <div class="cta-box">
+
+        <div class="eyebrow" style="color:#ffd1d3">
+          Tu negocio
+        </div>
+
+        <h2>
+          Haz que dejar una reseña sea tan fácil como acercar un móvil.
+        </h2>
+
+        <p>
+          Configura tu negocio, crea tus placas y controla
+          las interacciones desde un único panel.
+        </p>
+
+        <a class="btnx" href="{{ url_for('register') }}">
+          Crear mi cuenta →
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+  <div class="wrap">
+
+    <footer class="foot">
+
+      <span>
+        © 2026 ReseñaTap
+      </span>
+
+      <span>
+        NFC · QR · Reseñas · Negocios locales
+      </span>
+
+    </footer>
+
+  </div>
+
+</div>
+
+{% endblock %}
+```

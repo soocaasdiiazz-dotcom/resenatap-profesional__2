@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Crear cuenta · ReseñaTap{% endblock %}
+{% block content %}
+<div class="auth card">
+<h1>Crear cuenta</h1>
+<form method="post">
+<label>Negocio<input name="business_name" required></label>
+<label>Email<input type="email" name="email" required></label>
+<label>Contraseña<input type="password" name="password" minlength="6" required></label>
+<button class="btn" type="submit">Crear cuenta</button>
+</form>
+</div>
+{% endblock %}

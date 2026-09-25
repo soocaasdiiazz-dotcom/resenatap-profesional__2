@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Panel · ReseñaTap{% endblock %}
+{% block content %}
+<div class="page-head"><div><span class="eyebrow">Panel</span><h1>{{ business.name }}</h1><p>{{ business.description }}</p></div><a class="btn" href="{{ url_for('plates') }}">Gestionar placas</a></div>
+<div class="grid three">
+<div class="stat card"><span>Total</span><strong>{{ stats.total_scans or 0 }}</strong><small>interacciones</small></div>
+<div class="stat card"><span>NFC</span><strong>{{ stats.nfc_scans or 0 }}</strong><small>toques</small></div>
+<div class="stat card"><span>QR</span><strong>{{ stats.qr_scans or 0 }}</strong><small>escaneos</small></div>
+</div>
+<div class="card"><h2>Tus placas</h2>
+<table><tr><th>Nombre</th><th>Código</th><th>Interacciones</th><th></th></tr>
+{% for p in plates %}<tr><td>{{ p.name }}</td><td><code>{{ p.code }}</code></td><td>{{ p.scans or 0 }}</td><td><a href="{{ url_for('plate_qr', plate_id=p.id) }}" target="_blank">QR</a></td></tr>{% else %}<tr><td colspan="4">Todavía no tienes placas.</td></tr>{% endfor %}
+</table></div>
+<div class="card"><h2>Solicitar placas</h2><form method="post" action="{{ url_for('create_order') }}" class="inline"><input type="number" name="quantity" min="1" value="1"><button class="btn" type="submit">Registrar pedido</button></form></div>
+{% endblock %}

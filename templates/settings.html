@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Ajustes · ReseñaTap{% endblock %}
+{% block content %}
+<div class="auth wide card"><h1>Ajustes del negocio</h1>
+<form method="post">
+<label>Nombre<input name="name" value="{{ business.name }}" required></label>
+<label>Descripción<textarea name="description">{{ business.description }}</textarea></label>
+<label>Color<input type="color" name="color" value="{{ business.color }}"></label>
+<label>URL de reseñas<input type="url" name="review_url" value="{{ business.review_url }}" placeholder="https://..."></label>
+<button class="btn" type="submit">Guardar cambios</button>
+</form></div>
+{% endblock %}

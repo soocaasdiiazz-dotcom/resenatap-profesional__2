@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block title %}{{ business.name }} · ReseñaTap{% endblock %}
+{% block content %}
+<section class="public card" style="--accent: {{ business.color }}">
+<div class="logo-dot"></div><span class="eyebrow">RESEÑATAP</span><h1>{{ business.name }}</h1><p>{{ business.description }}</p>
+{% if business.review_url %}<a class="btn" href="{{ business.review_url }}">Dejar una reseña</a>{% else %}<p>Este negocio todavía no ha configurado su enlace de reseñas.</p>{% endif %}
+</section>
+{% endblock %}

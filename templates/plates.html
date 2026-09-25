@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block title %}Placas · ReseñaTap{% endblock %}
+{% block content %}
+<div class="page-head"><div><span class="eyebrow">Configuración</span><h1>Placas</h1></div></div>
+<div class="card"><h2>Nueva placa</h2><form method="post" class="form-grid"><label>Nombre<input name="name" placeholder="Entrada" required></label><label>Código único<input name="code" placeholder="bar-pepe-entrada" required></label><button class="btn" type="submit">Crear</button></form></div>
+<div class="grid two">{% for p in plates %}<div class="card"><h3>{{ p.name }}</h3><code>{{ p.code }}</code><p><a class="btn small" href="{{ url_for('plate_qr', plate_id=p.id) }}" target="_blank">Abrir QR</a></p><form method="post" action="{{ url_for('delete_plate', plate_id=p.id) }}"><button class="danger" type="submit">Eliminar</button></form></div>{% else %}<div class="card">No hay placas.</div>{% endfor %}</div>
+{% endblock %}

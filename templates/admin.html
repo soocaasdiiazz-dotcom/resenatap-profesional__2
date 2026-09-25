@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block title %}Admin · ReseñaTap{% endblock %}
+{% block content %}
+<div class="page-head"><div><span class="eyebrow">Administración</span><h1>ReseñaTap</h1></div></div>
+<div class="card"><h2>Negocios</h2><table><tr><th>Negocio</th><th>Email</th><th>Placas</th><th>Escaneos</th></tr>{% for b in businesses %}<tr><td>{{ b.name }}</td><td>{{ b.email }}</td><td>{{ b.plates_count }}</td><td>{{ b.scans_count }}</td></tr>{% else %}<tr><td colspan="4">Sin negocios.</td></tr>{% endfor %}</table></div>
+<div class="card"><h2>Pedidos</h2><table><tr><th>Negocio</th><th>Cantidad</th><th>Estado</th><th>Fecha</th></tr>{% for o in orders %}<tr><td>{{ o.business_name }}</td><td>{{ o.quantity }}</td><td>{{ o.status }}</td><td>{{ o.created_at }}</td></tr>{% else %}<tr><td colspan="4">Sin pedidos.</td></tr>{% endfor %}</table></div>
+{% endblock %}
